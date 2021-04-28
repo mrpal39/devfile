@@ -14,7 +14,7 @@ SECRET_KEY = '7g=8kvags7^v1(vwm^l98t2*9-&%i&3van1y2g=+oqfjkd!rsf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['main.d279pe9w3bawxr.amplifyapp.com']
 
 
 # Application definition
