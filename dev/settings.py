@@ -1,7 +1,15 @@
+from dotenv import load_dotenv
 
 from pathlib import Path
+import os
+from django.utils.translation import gettext_lazy as _
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+from dotenv import load_dotenv
+env_path = Path('.') / '.env'
+
+load_dotenv(dotenv_path=env_path)
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -9,18 +17,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7g=8kvags7^v1(vwm^l98t2*9-&%i&3van1y2g=+oqfjkd!rsf'
+SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = SECRET_KEY1
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['main.d279pe9w3bawxr.amplifyapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'core',
+    'user',
+
+    'bootstrap',
+    'fontawesome',
+
+    "django_bootstrap5",
+    "django.contrib.admindocs",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,6 +46,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,7 +111,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('de', _('German')),
+    ('en', _('English')),
+]
 
 TIME_ZONE = 'UTC'
 
@@ -104,7 +125,14 @@ USE_L10N = True
 USE_TZ = True
 
 
+USE_I18N = False 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT =[BASE_DIR, 'static']
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = [BASE_DIR, 'media']
+MEDIA_URL = '/media/'
+

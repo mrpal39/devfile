@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+
+{%block content%}
+
+{% for a in conme%}
+{{a.dependent_repos_count}}
+{{a.dependents_count}}
+{{a.description}}
+{{a.forks}}
+{{a.homepage}}{{a.keywords}}{{a.language}}{{a.latest_download_url}}{{a.package_manager_url}}keywords
+
+
+{% endfor%}
+{% endblock%}

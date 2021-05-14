@@ -1,0 +1,19 @@
+{% include 'base.html' %} {% block content %}
+<div class="container">
+  <h1 class="center">Repository</h1>
+  {% comment %} <div class="alert-heading">{{respons.language}}</div>
+  <div class="row-cols-5">
+    {{respons.full_name}} {{respons.description}} {{respons.fork}} {{respons.created_at}}
+    {{respons.rank}}
+  </div> {% endcomment %}
+{% comment %} {{aaa}} {% endcomment %}
+{{respons}}
+</div>
+
+
+  <h1 class="center">projects</h1>
+{{projects}}
+ {% comment %} <h1 class="center">dependents</h1>
+{{dependents.name}} {% endcomment %}
+{% endblock content %} 
+{% block javascript %} {% endblock javascript %}
